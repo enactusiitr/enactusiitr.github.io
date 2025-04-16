@@ -771,14 +771,12 @@ Enactus IIT Roorkee is a dynamic student-led organization driven by the belief t
         zoom: 95%;
       }
 
-      @media (max-width: 768px) {
-            html, body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            width: 100%;
-            zoom: 85%;
+      html, body.mobile {
+        zoom: 85%;
         }
+
+        html, body.desktop {
+        zoom: 95%;
         }
       
       * {
@@ -1771,7 +1769,21 @@ Enactus IIT Roorkee is a dynamic student-led organization driven by the belief t
     		window.fedops.phaseStarted('partially_visible', {paramsOverrides: { pageId: firstPageId, isSuccessfulSSR: !clientSideRender }})
     	}
     </script>
-
+    <script>
+        function isMobile() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+      
+        window.onload = function () {
+          if (isMobile()) {
+            document.body.style.zoom = "85%";
+            document.body.classList.add("mobile");
+          } else {
+            document.body.style.zoom = "95%";
+            document.body.classList.add("desktop");
+          }
+        };
+      </script>
 
     <script defer="" src="./home_files/siteTags.bundle.min.js.download"></script>
     <!--pageHtmlEmbeds.bodyEnd start-->
