@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1200, initial-scale=1.0, user-scalable=no" />
-  <title>Desktop-First Locked Layout</title>
+  <meta charset="UTF-8">
+  
+  <!-- Viewport Trick: Force desktop width and prevent mobile scaling -->
+  <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Fixed Desktop Layout</title>
 
   <style>
-    /* Fade transition for body (optional loading effect) */
-    body {
-      transition: opacity ease-in 0.2s;
-      font-family: "Cormorant Garamond", serif;
-      padding: 40px;
-      background: #fff;
-      color: #111;
+    html, body {
       margin: 0;
-    }
-
-    body[unresolved] {
-      opacity: 0;
-      display: block;
-      overflow: hidden;
-      position: relative;
-    }
-
-    * {
-      box-sizing: border-box;
+      padding: 0;
+      background: #f5f5f5;
+      color: #111;
+      font-family: Arial, sans-serif;
+      overflow-x: auto;
     }
 
     .container {
-      width: 1200px;
-      margin: 0 auto;
+      width: 1200px;            /* Fixed desktop width */
+      margin: 0 auto;           /* Center on large screens */
+      background: white;
+      padding: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     .header-box {
@@ -39,19 +33,13 @@
       font-weight: bold;
       text-align: center;
       padding: 40px 0;
-      margin: 40px 0;
-      width: 100%;
-    }
-
-    .blog-post {
-      max-width: 1000px;
-      margin: 0 auto;
+      margin-bottom: 40px;
     }
 
     .blog-title {
       font-size: 30px;
-      font-weight: 200;
-      margin-bottom: 40px;
+      font-weight: 400;
+      margin-bottom: 20px;
     }
 
     .blog-preview {
@@ -63,9 +51,9 @@
       color: #111;
       font-weight: bold;
       cursor: pointer;
-      display: inline-block;
       text-decoration: underline;
       margin-top: 10px;
+      display: inline-block;
     }
 
     .more-content {
@@ -76,26 +64,24 @@
 
 <body>
   <div class="container">
-    <div class="header-box">
-      My Locked Desktop Layout
-    </div>
+    <div class="header-box">Fixed Desktop View</div>
 
     <div class="blog-post">
-      <div class="blog-title">How to Design for Desktop</div>
+      <div class="blog-title">Example Blog Title</div>
       <div class="blog-preview">
-        This blog post discusses how to create websites that look identical on all screen sizes.
-        <div class="read-more" onclick="toggleContent()">Read More</div>
+        This layout is locked to 1200px width. On mobile, it looks the same as desktop by zooming out.
+        <div class="read-more" onclick="toggleMore()">Read More</div>
         <div class="more-content" id="more">
-          <p>To make this work, you lock the width, disable scaling, and avoid responsive adjustments.</p>
+          <p>This works by setting the viewport width to 1200 and disabling mobile scaling. No responsive rules are used.</p>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    function toggleContent() {
-      const more = document.getElementById('more');
-      more.style.display = (more.style.display === 'none' || more.style.display === '') ? 'block' : 'none';
+    function toggleMore() {
+      const content = document.getElementById('more');
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 </body>
