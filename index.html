@@ -826,6 +826,166 @@
     html {
       scroll-behavior: smooth;
     }
+
+    /* Base responsive styles */
+    @media (max-width: 1200px) {
+        .header-top {
+            padding: 20px 30px 0 30px;
+        }
+        .hero-section, .who-we-are, .vision-container {
+            padding: 20px 30px;
+        }
+        .footer {
+            padding: 30px 30px 40px 30px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        /* Tablet styles */
+        .header-top {
+            padding: 20px 20px 0 20px;
+        }
+        .logo-image {
+            width: 100px;
+        }
+        .nav-link {
+            font-size: 1rem;
+        }
+        .hero-section, .who-we-are, .vision-container {
+            padding: 20px;
+        }
+        .who-we-are h2 {
+            font-size: 2.2rem;
+        }
+        .who-we-are p {
+            font-size: 1rem;
+        }
+        .projects-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .footer {
+            padding: 25px 20px;
+        }
+        .contact-heading {
+            margin-left: 0;
+            font-size: 2rem;
+        }
+        .map-container {
+            margin-top: 20px;
+        }
+        .vision-heading {
+            font-size: 2.2rem;
+        }
+        .team-button {
+            margin: 20px auto;
+            display: block;
+            width: fit-content;
+        }
+    }
+
+    @media (max-width: 600px) {
+        /* Mobile styles */
+        .header-top {
+            padding: 15px 15px 0 15px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo-image {
+            width: 80px;
+        }
+        .navbar {
+            margin-top: 15px;
+        }
+        .nav-list {
+            gap: 20px;
+        }
+        .nav-link {
+            font-size: 0.9rem;
+        }
+        .hero-section, .who-we-are, .vision-container {
+            padding: 15px;
+        }
+        .hero-image {
+            border-radius: 8px;
+        }
+        .who-we-are h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .who-we-are p {
+            font-size: 0.9rem;
+        }
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+        .project-card {
+            max-width: 100%;
+        }
+        .footer {
+            padding: 20px 15px;
+            flex-direction: column;
+        }
+        .contact-heading {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .map-container {
+            height: 250px;
+            margin-top: 25px;
+        }
+        .vision-heading {
+            font-size: 1.8rem;
+        }
+        .vision-content p {
+            font-size: 0.9rem;
+        }
+        .slideshow {
+            width: 100%;
+        }
+        .slide img {
+            height: 250px;
+        }
+        .slide-caption p {
+            font-size: 1rem;
+        }
+        .social-sidebar {
+            display: none;
+        }
+    }
+
+    @media (max-width: 400px) {
+        /* Small mobile devices */
+        .nav-list {
+            gap: 15px;
+        }
+        .nav-link {
+            font-size: 0.8rem;
+        }
+        .who-we-are h2 {
+            font-size: 1.6rem;
+        }
+        .who-we-are p {
+            font-size: 0.85rem;
+        }
+        .project-title {
+            font-size: 1.3rem;
+        }
+        .project-description {
+            font-size: 0.85rem;
+        }
+        .contact-heading {
+            font-size: 1.6rem;
+        }
+        .contact-info {
+            font-size: 0.85rem;
+        }
+        .slide img {
+            height: 200px;
+        }
+        .slide-caption p {
+            font-size: 0.9rem;
+        }
+    }
   </style>
 </head>
 <body>
