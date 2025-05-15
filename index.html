@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Enactus IIT Roorkee Header</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enactus IIT Roorkee</title>
+  <meta name="viewport" content="width=1200, initial-scale=0.25, maximum-scale=1.0, user-scalable=no">
   <!-- Add Rubik and Kelly Slab fonts from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Kelly+Slab&display=swap" rel="stylesheet">
   <!-- Leaflet CSS for the map -->
@@ -13,7 +13,7 @@
   <style>
     /* Reset and base styles */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; background: #fff; }
+    body { font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; background: #fff; min-width: 1200px; overflow-x: hidden; }
 
     /* Header container */
     .header {
@@ -985,6 +985,79 @@
         .slide-caption p {
             font-size: 0.9rem;
         }
+    }
+
+    /* Force desktop layout on all devices */
+    body {
+      min-width: 1200px; /* Minimum width matches the viewport width */
+      overflow-x: hidden;
+    }
+    
+    /* Ensure consistent margins across all devices */
+    .hero-section, 
+    .who-we-are, 
+    .vision-container,
+    .projects-container,
+    .header-top,
+    .footer {
+      box-sizing: border-box;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    /* Landscape mobile adjustments */
+    @media (max-height: 500px) and (orientation: landscape) {
+      body {
+        /* Adjust for landscape */
+        min-width: 1200px;
+      }
+      
+      .meta-viewport {
+        /* For debugging - can be removed */
+        content: "landscape";
+      }
+    }
+    
+    /* Remove all mobile-specific adjustments since we want desktop view */
+    @media (max-width: 1200px), (max-width: 900px), (max-width: 600px), (max-width: 400px) {
+      /* Reset all mobile-specific styles */
+      .header-top, 
+      .logo-image,
+      .navbar,
+      .nav-list,
+      .nav-link,
+      .hero-section, 
+      .who-we-are,
+      .vision-container,
+      .who-we-are h2,
+      .who-we-are p,
+      .projects-grid,
+      .project-card,
+      .footer,
+      .contact-heading,
+      .map-container,
+      .vision-heading,
+      .vision-content p,
+      .team-button,
+      .slideshow,
+      .slide img,
+      .slide-caption p {
+        /* Reset to desktop values */
+        width: auto;
+        max-width: none;
+        font-size: inherit;
+        margin: inherit;
+        padding: inherit;
+        flex-direction: inherit;
+        align-items: inherit;
+        height: auto;
+        border-radius: inherit;
+      }
+      
+      /* Keep social sidebar visible */
+      .social-sidebar {
+        display: flex;
+      }
     }
   </style>
 </head>
