@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Enactus IIT Roorkee</title>
-  <meta name="viewport" content="width=1200, initial-scale=0.25, minimum-scale=0.25, maximum-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Add Rubik and Kelly Slab fonts from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Kelly+Slab&display=swap" rel="stylesheet">
   <!-- Leaflet CSS for the map -->
@@ -13,7 +13,7 @@
   <style>
     /* Reset and base styles */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; background: #fff; min-width: 1200px; overflow-x: hidden; }
+    body { font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; background: #fff; }
 
     /* Header container */
     .header {
@@ -178,14 +178,13 @@
       font-family: 'Rubik', cursive;
       font-size: 2.2rem;
       margin-bottom: 30px;
-      margin-left: 150px;
+      margin-left: 100px;
     }
 
     .contact-info {
       margin-bottom: 30px;
       font-size: 0.95rem;
       font-family: 'Kelly Slab', cursive;
-      margin-left: 75px;
     }
 
     .contact-label {
@@ -203,7 +202,6 @@
       gap: 20px;
       margin-bottom: 20px;
       margin-top: 15px;
-      margin-left: 75px;
     }
 
     .social-icon {
@@ -220,7 +218,6 @@
     .footer-credits {
       font-size: 1rem;
       margin-top: 30px;
-      margin-left: 50px;
     }
 
     .map-container {
@@ -829,259 +826,6 @@
     html {
       scroll-behavior: smooth;
     }
-
-    /* Base responsive styles */
-    @media (max-width: 1200px) {
-        .header-top {
-            padding: 20px 30px 0 30px;
-        }
-        .hero-section, .who-we-are, .vision-container {
-            padding: 20px 30px;
-        }
-        .footer {
-            padding: 30px 30px 40px 30px;
-        }
-    }
-
-    @media (max-width: 900px) {
-        /* Tablet styles */
-        .header-top {
-            padding: 20px 20px 0 20px;
-        }
-        .logo-image {
-            width: 100px;
-        }
-        .nav-link {
-            font-size: 1rem;
-        }
-        .hero-section, .who-we-are, .vision-container {
-            padding: 20px;
-        }
-        .who-we-are h2 {
-            font-size: 2.2rem;
-        }
-        .who-we-are p {
-            font-size: 1rem;
-        }
-        .projects-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .footer {
-            padding: 25px 20px;
-        }
-        .contact-heading {
-            margin-left: 0;
-            font-size: 2rem;
-        }
-        .map-container {
-            margin-top: 20px;
-        }
-        .vision-heading {
-            font-size: 2.2rem;
-        }
-        .team-button {
-            margin: 20px auto;
-            display: block;
-            width: fit-content;
-        }
-    }
-
-    @media (max-width: 600px) {
-        /* Mobile styles */
-        .header-top {
-            padding: 15px 15px 0 15px;
-            flex-direction: column;
-            align-items: center;
-        }
-        .logo-image {
-            width: 80px;
-        }
-        .navbar {
-            margin-top: 15px;
-        }
-        .nav-list {
-            gap: 20px;
-        }
-        .nav-link {
-            font-size: 0.9rem;
-        }
-        .hero-section, .who-we-are, .vision-container {
-            padding: 15px;
-        }
-        .hero-image {
-            border-radius: 8px;
-        }
-        .who-we-are h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        .who-we-are p {
-            font-size: 0.9rem;
-        }
-        .projects-grid {
-            grid-template-columns: 1fr;
-        }
-        .project-card {
-            max-width: 100%;
-        }
-        .footer {
-            padding: 20px 15px;
-            flex-direction: column;
-        }
-        .contact-heading {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        .map-container {
-            height: 250px;
-            margin-top: 25px;
-        }
-        .vision-heading {
-            font-size: 1.8rem;
-        }
-        .vision-content p {
-            font-size: 0.9rem;
-        }
-        .slideshow {
-            width: 100%;
-        }
-        .slide img {
-            height: 250px;
-        }
-        .slide-caption p {
-            font-size: 1rem;
-        }
-        .social-sidebar {
-            display: none;
-        }
-    }
-
-    @media (max-width: 400px) {
-        /* Small mobile devices */
-        .nav-list {
-            gap: 15px;
-        }
-        .nav-link {
-            font-size: 0.8rem;
-        }
-        .who-we-are h2 {
-            font-size: 1.6rem;
-        }
-        .who-we-are p {
-            font-size: 0.85rem;
-        }
-        .project-title {
-            font-size: 1.3rem;
-        }
-        .project-description {
-            font-size: 0.85rem;
-        }
-        .contact-heading {
-            font-size: 1.6rem;
-        }
-        .contact-info {
-            font-size: 0.85rem;
-        }
-        .slide img {
-            height: 200px;
-        }
-        .slide-caption p {
-            font-size: 0.9rem;
-        }
-    }
-
-    /* Force desktop layout on all devices but maintain text readability */
-    body {
-      min-width: 1200px;
-      overflow-x: hidden;
-    }
-    
-    /* Mobile optimizations while keeping desktop layout */
-    @media (max-width: 600px) {
-      /* Set all text elements to 1.5rem on mobile */
-      body, p, h1, h2, h3, h4, h5, h6, a, span, li, 
-      .who-we-are p, .who-we-are h2,
-      .projects-heading, .projects-description, .project-title, .project-description, 
-      .vision-heading, .vision-content p,
-      .contact-heading, .contact-info, .footer-credits p,
-      .slide-caption p, .subtitle, .nav-link, 
-      .team-button, .learn-more, .dropdown-item {
-        font-size: 1.5rem !important;
-        line-height: 1.5 !important;
-      }
-      
-      /* Keep text legible and justified */
-      p, .who-we-are p, .projects-description, .project-description, .vision-content p, .slide-caption p {
-        text-align: justify;
-        text-justify: inter-word;
-      }
-      
-      /* Ensure buttons and interactive elements remain usable */
-      .nav-link, .team-button, .learn-more {
-        padding: inherit !important;
-      }
-      
-      /* Maintain visibility of important content */
-      .project-image-container, .slide img {
-        height: auto !important;
-      }
-    }
-    
-    /* Ensure consistent margins and spacing */
-    .hero-section, 
-    .who-we-are, 
-    .vision-container,
-    .projects-container,
-    .header-top,
-    .footer {
-      box-sizing: border-box;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-
-    /* Landscape adjustments */
-    @media (max-height: 500px) and (orientation: landscape) {
-      body {
-        min-width: 1200px;
-      }
-    }
-    
-    /* Preserve desktop layout while ensuring text readability */
-    @media (max-width: 1200px), (max-width: 900px), (max-width: 600px), (max-width: 400px) {
-      /* Reset layout adjustments but preserve font properties */
-      .header-top, 
-      .navbar,
-      .nav-list,
-      .hero-section, 
-      .who-we-are,
-      .vision-container,
-      .projects-grid,
-      .project-card,
-      .footer,
-      .map-container,
-      .team-button,
-      .slideshow,
-      .slide img {
-        width: auto;
-        max-width: none;
-        margin: inherit;
-        padding: inherit;
-        flex-direction: inherit;
-        align-items: inherit;
-        height: auto;
-        border-radius: inherit;
-      }
-      
-      /* Keep consistent image sizes */
-      .logo-image {
-        width: 120px !important;
-      }
-      
-      /* Keep important UI elements visible */
-      .social-sidebar {
-        display: flex;
-      }
-    }
   </style>
 </head>
 <body>
@@ -1141,7 +885,9 @@
     <div class="projects-container">
       <h2 class="projects-heading">Our Projects</h2>
       <p class="projects-description">
-        At Enactus IITR, we take pride in designing and developing innovative projects that push the boundaries of technology and creativity, our projects reflect our passion for excellence. Take a look at some of our latest work and discover how we are making an impact.
+        At Enactus IITR, we take pride in designing and developing innovative projects that push the boundaries of technology
+        and creativity, our projects reflect our passion for excellence. Take a look at some of our latest work and discover how we
+        are making an impact.
       </p>
       
       <div class="projects-grid">
