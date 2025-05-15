@@ -10,14 +10,7 @@ Allow: /project-completed.html
 Allow: /project-in-progress.html
 
 # Disallow asset/code folders (not needed for indexing)
-Disallow: /blog_files/
-Disallow: /home_files/
-Disallow: /our_events_files/
-Disallow: /our_projects_files/
-Disallow: /our_team_files/
-Disallow: /project_completed_files/
-Disallow: /project_in_progress_files/
-Disallow: /Site Files/
+Disallow: /files/
 Disallow: /.git/
 
 # Sitemap location (replace with your actual URL)

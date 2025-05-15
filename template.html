@@ -267,6 +267,42 @@
       background: #4267B2;
     }
 
+    /* Projects Banner Styles */
+    .projects-banner {
+      background-color: #002855; /* Navy blue color */
+      padding: 40px 0;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .projects-banner h1 {
+      color: #bfbfbf;
+      font-size: 3.5rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* Responsive banner adjustments */
+    @media (max-width: 768px) {
+      .projects-banner {
+        padding: 40px 0;
+      }
+      
+      .projects-banner h1 {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .projects-banner {
+        padding: 30px 0;
+      }
+      
+      .projects-banner h1 {
+        font-size: 2.5rem;
+      }
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .header-top { flex-direction: column; align-items: flex-start; padding: 18px 18px 0 18px; }
@@ -359,7 +395,7 @@
             <a href="./blog.html" class="nav-link">Blog</a>
           </li>
           <li class="nav-item">
-            <a href="./our-team.html" class="nav-link active">Our Team</a>
+            <a href="./our-team.html" class="nav-link">Our Team</a>
           </li>
           <li class="nav-item">
             <a href="#footer" class="nav-link">Contact Us</a>
@@ -371,7 +407,12 @@
   
   <!-- Content Area: Add your page-specific content here -->
   <main>
-    <!-- Your page content goes here -->
+    <!-- Projects Banner Section -->
+    <section class="projects-banner">
+      <h1>Our Projects</h1>
+    </section>
+
+    <!-- Your other page content goes here -->
   </main>
   
   <!-- Footer Section -->
