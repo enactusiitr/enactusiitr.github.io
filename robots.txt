@@ -4,7 +4,6 @@ User-agent: *
 Allow: /index.html
 Allow: /blog.html
 Allow: /our-events.html
-Allow: /our-projects.html
 Allow: /our-team.html
 Allow: /project-completed.html
 Allow: /project-in-progress.html

@@ -2,24 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Enactus IIT Roorkee</title>
+  <title>Enactus IIT Roorkee - Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Add Rubik and Kelly Slab fonts from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Kelly+Slab&display=swap" rel="stylesheet">
-  <!-- Add Cormorant Garamond font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Leaflet CSS for the map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" 
-        crossorigin=""/>
+  <!-- Add Rubik, Kelly Slab, and Cormorant Garamond fonts from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Kelly+Slab&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Add this at the top of the style section */
-    html {
-      scroll-behavior: smooth;
-    }
     /* Reset and base styles */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     body { font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; background: #fff; }
+    html { scroll-behavior: smooth; }
 
     /* Header container */
     .header {
@@ -29,14 +22,7 @@
       padding: 0 0 10px 0;
     }
 
-    /* Header top: flex row, logo left, nav right */
-    .header-top {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 20px 60px 0 60px;
-    }
+    /* Logo styles */
     .logo {
       display: flex;
       flex-direction: column;
@@ -48,104 +34,93 @@
       margin-right: 0;
       margin-bottom: 0;
     }
+    @media (max-width: 576px) {
+      .logo-image {
+        width: 100px;
+        margin-left: -10px;
+      }
+    }
     .subtitle {
       margin-left: 0;
-      margin-top: 8px;
+      margin-top: 4px;
       font-size: 0.9rem;
       color: #2d2d2d;
       font-weight: 400;
       letter-spacing: 0.01em;
       text-align: left;
     }
+    @media (max-width: 576px) {
+      .subtitle {
+        font-size: 0.8rem;
+      }
+    }
 
-    /* Navigation bar */
-    .navbar {
-      display: flex;
-      align-items: flex-end;
-      margin-top: 0;
-      position: static;
-    }
-    .nav-list {
-      display: flex;
-      list-style: none;
-      gap: 40px;
-      align-items: flex-end;
-    }
-    .nav-item {
-      position: relative;
-    }
+    /* Navigation styling */
     .nav-link {
       font-size: 1.2rem;
       font-weight: 400;
       letter-spacing: 0.09em;
-      color: #000;
+      color: #000 !important;
       text-decoration: none;
-      padding: 6px 0;
+      padding: 6px 0 !important;
+      margin: 0 15px;
       transition: color 0.2s, border-bottom 0.2s;
       border-bottom: 2px solid transparent;
     }
+    @media (max-width: 992px) {
+      .nav-link {
+        font-size: 1rem;
+        margin: 5px 0;
+      }
+    }
     .nav-link.active {
-      color: #3b7c3b;
+      color: #3b7c3b !important;
       border-bottom: 2px solid #3b7c3b;
     }
     .nav-link:hover {
-      color: #e6b200;
+      color: #e6b200 !important;
       border-bottom: 2px solid #e6b200;
     }
-    /* Our Projects special style */
+
     .nav-link.projects {
-      color: #000;
+      color: #000 !important;
       border-bottom: 2px solid transparent;
       font-weight: 400;
       letter-spacing: 0.11em;
     }
     .nav-link.projects.active {
-      color: #3b7c3b;
+      color: #3b7c3b !important;
       border-bottom: 2px solid #3b7c3b;
     }
     .nav-link.projects:hover {
-      color: #e6b200;
+      color: #e6b200 !important;
       border-bottom: 2px solid #e6b200;
     }
 
-    /* Dropdown */
-    .dropdown {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 100%;
+    /* Dropdown styling */
+    .dropdown-menu {
       min-width: 180px;
       background: #fff;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       border-radius: 0 0 12px 12px;
-      display: none;
-      flex-direction: column;
-      z-index: 100;
       padding: 12px 0 8px 0;
       animation: fadeIn 0.2s;
+      border: none;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px);}
       to { opacity: 1; transform: translateY(0);}
     }
-    .dropdown .dropdown-item {
+    .dropdown-item {
       padding: 8px 24px;
       font-size: 1rem;
       color: #222;
-      text-decoration: none;
-      cursor: pointer;
       transition: background 0.15s, color 0.15s;
       white-space: nowrap;
     }
-    .dropdown .dropdown-item:hover {
+    .dropdown-item:hover {
       background: #f7f7f7;
       color: #3b7c3b;
-    }
-
-    /* Show dropdown on hover */
-    .nav-item.projects:hover .dropdown,
-    .nav-item.projects:focus-within .dropdown {
-      display: flex;
     }
 
     /* Blog Page Styles */
@@ -159,6 +134,11 @@
     .blog-banner h1 {
       font-size: 3.5rem;
       font-weight: 500;
+    }
+    @media (max-width: 768px) {
+      .blog-banner h1 {
+        font-size: 2.5rem;
+      }
     }
     
     .blog-container {
@@ -179,6 +159,11 @@
       font-weight: 600;
       letter-spacing: 0.01em;
     }
+    @media (max-width: 768px) {
+      .blog-post h2 {
+        font-size: 1.7rem;
+      }
+    }
     
     .blog-post p {
       font-size: 1rem;
@@ -187,7 +172,8 @@
       margin-bottom: 15px;
     }
     
-    .blog-post .read-more {
+    .blog-post .read-more, 
+    .blog-post .read-less {
       display: inline-block;
       color: #002855;
       font-weight: 500;
@@ -195,7 +181,8 @@
       margin-top: 10px;
     }
     
-    .blog-post .read-more:hover {
+    .blog-post .read-more:hover,
+    .blog-post .read-less:hover {
       text-decoration: underline;
     }
     
@@ -206,77 +193,88 @@
       margin: 40px auto;
     }
 
+    /* Updated expanded content styles */
+    .expanded-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      margin: 25px 0 15px 0;
+      color: #002855;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .expanded-content h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .expanded-content h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      margin: 20px 0 10px 0;
+      color: #333;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .expanded-content h4 {
+        font-size: 1.2rem;
+      }
+    }
+    
+    .expanded-content ul {
+      padding-left: 20px;
+    }
+    
+    .expanded-content li {
+      margin-bottom: 8px;
+    }
+
     /* Footer Styles */
     .footer {
       background-color: #e6a700;
-      padding: 30px 110px 40px 110px;
-      display: flex;
-      justify-content: space-between;
       color: #000;
     }
-
-    .contact-details {
-      flex: 1;
-    }
-
     .contact-heading {
       font-family: 'Rubik', cursive;
       font-size: 2.2rem;
       margin-bottom: 30px;
-      margin-left: 100px;
     }
-
+    @media (max-width: 768px) {
+      .contact-heading {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+    }
     .contact-info {
       margin-bottom: 30px;
       font-size: 0.95rem;
       font-family: 'Kelly Slab', cursive;
     }
-
     .contact-label {
       font-weight: bold;
       display: inline-block;
       margin-right: 10px;
     }
-
     .contact-info p {
       margin-bottom: 5px;
     }
-
     .social-icons {
       display: flex;
       gap: 20px;
       margin-bottom: 20px;
       margin-top: 15px;
     }
-
     .social-icon {
       text-decoration: none;
       color: #000;
       font-size: 2.3rem;
     }
-
     .social-icon svg {
       width: 40px;
       height: 40px;
     }
-
     .footer-credits {
       font-size: 1rem;
       margin-top: 30px;
-    }
-
-    .map-container {
-      flex: 1;
-      height: 300px;
-      max-width: 500px;
-      border-radius: 6px;
-      overflow: hidden;
-      margin-left: 10px;
-    }
-
-    #map {
-      height: 100%;
-      width: 100%;
     }
 
     /* Fixed Social Sidebar */
@@ -290,7 +288,11 @@
       z-index: 1000;
       box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     }
-
+    @media (max-width: 768px) {
+      .social-sidebar {
+        display: none; /* Hide on mobile */
+      }
+    }
     .social-sidebar-icon {
       width: 50px;
       height: 50px;
@@ -299,250 +301,297 @@
       align-items: center;
       transition: all 0.3s;
     }
-
     .social-sidebar-icon:hover {
       width: 60px;
     }
-
     .social-sidebar-icon svg {
       width: 25px;
       height: 25px;
       fill: white;
     }
-
     .instagram-bg {
       background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
     }
-
     .linkedin-bg {
       background: #0077b5;
     }
-
     .facebook-bg {
       background: #4267B2;
     }
 
-
-    /* Update heading styles to use Cormorant Garamond */
-    .expanded-content h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.7rem;
-      margin: 25px 0 15px 0;
-      color: #002855;
-      font-weight: 600;
+    /* Blog expand/collapse styles */
+    .read-more, .read-less {
+      display: inline-block;
+      color: #3b7c3b;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: color 0.2s;
+    }
+    .read-more:hover, .read-less:hover {
+      color: #e6b200;
+      text-decoration: underline;
+    }
+    .expanded-content {
+      margin-top: 15px;
     }
 
-    .expanded-content h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      margin: 20px 0 10px 0;
-      color: #333;
-      font-weight: 600;
+    /* Fixed map container styles */
+    .map-container {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 30px;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    #map {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background: #f8f9fa;
+    }
+    
+    /* Remove padding from map column */
+    .col-lg-6 .map-container {
+      padding: 0;
     }
   </style>
 </head>
 <body>
+  <!-- Header with Bootstrap Navbar -->
   <header class="header">
-    <div class="header-top">
-      <div class="logo">
-        <!-- Enactus logo SVG -->
-        <a href="index.html">
-          <img src="files/logo.jpg" alt="Enactus Logo" class="logo-image">
-        </a>
-        <a href="index.html" style="text-decoration: none;">
-          <span class="subtitle">Indian Institute of Technology Roorkee</span>
-        </a>
-      </div>
-      <nav class="navbar">
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="./index.html" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item projects">
-            <a href="./our-projects.html" class="nav-link projects" tabindex="0">Our Projects</a>
-            <div class="dropdown">
-              <a class="dropdown-item" href="./project-in-progress.html">Project in Progress</a>
-              <a class="dropdown-item" href="./project-completed.html">Project Completed</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="./our-events.html" class="nav-link">Our Events</a>
-          </li>
-          <li class="nav-item">
-            <a href="./blog.html" class="nav-link active">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a href="./our-team.html" class="nav-link">Our Team</a>
-          </li>
-          <li class="nav-item">
-            <a href="#footer" class="nav-link">Contact Us</a>
-          </li>
-        </ul>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <div class="logo">
+          <a href="index.html">
+            <img src="files/logo.jpg" alt="Enactus Logo" class="logo-image">
+          </a>
+          <a href="index.html" style="text-decoration: none;">
+            <span class="subtitle">Indian Institute of Technology Roorkee</span>
+          </a>
+        </div>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="./index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link projects dropdown-toggle" href="./our-projects.html" id="navbarDropdown" 
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Our Projects
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="./project-in-progress.html">Project in Progress</a></li>
+                <li><a class="dropdown-item" href="./project-completed.html">Project Completed</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="./our-events.html" class="nav-link">Our Events</a>
+            </li>
+            <li class="nav-item">
+              <a href="./blog.html" class="nav-link active">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a href="./our-team.html" class="nav-link">Our Team</a>
+            </li>
+            <li class="nav-item">
+              <a href="#footer" class="nav-link">Contact Us</a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   </header>
   
   <!-- Blog Banner -->
   <div class="blog-banner">
-    <h1>Blog</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Blog</h1>
+        </div>
+      </div>
+    </div>
   </div>
   
   <!-- Blog Content Area -->
   <main class="blog-container">
-    <article class="blog-post">
-      <h2>StubXtract: IIT Roorkee's Innovative Solution Selected for National-Level Hult Prize at IIT Bombay</h2>
-      <p>A Proud Moment for Enactus IIT Roorkee</p>
-      <p>We are thrilled to announce that Project StubXtract has been selected for the National-Level Hult Prize Competition to be held at IIT Bombay. Competing against some of the brightest young innovators across the country, Team StubXtract from IIT Roorkee will present its ...</p>
-      
-      <a href="#" class="read-more" onclick="toggleContent('content-1'); return false;">Read more</a>
-      
-      <div id="content-1" class="expanded-content" style="display: none;">
-        <p>A Proud Moment for Enactus IIT Roorkee<br>
-        We are thrilled to announce that Project StubXtract has been selected for the National-Level Hult Prize Competition to be held at IIT Bombay. Competing against some of the brightest young innovators across the country, Team StubXtract from IIT Roorkee will present its groundbreaking solution to tackle one of India's most pressing environmental challenges—stubble burning.</p>
-        
-        <p>The Hult Prize, often referred to as the "Nobel Prize for Students", is a prestigious global competition that challenges university students to develop social entrepreneurship solutions for critical global issues. This year's theme revolves around sustainability and impact-driven innovation, making StubXtract a perfect fit for the challenge.
-        With this achievement, our team is not just representing IIT Roorkee but also pioneering a sustainable future for Indian agriculture. But what exactly is StubXtract? Let's explore.</p>
-        
-        <h3>StubXtract: Turning Stubble Waste into a Goldmine</h3>
-        <br>
-        <p>Every year, thousands of farmers in India resort to stubble burning, a practice that releases toxic pollutants into the air, worsens climate change, and depletes soil fertility. Despite government regulations, the lack of cost-effective alternatives forces farmers to continue this harmful method.</p>
-        
-        <p>This is where StubXtract comes in.
-        StubXtract is an innovative biorefinery-based solution that converts agricultural waste (stubble) into high-value bio-based products like vanillin, polylactic acid (PLA), and lactic acid, all of which have significant industrial applications in food, packaging, and medical fields.</p>
-        
-        <h3>How Does StubXtract Work?</h3>
-        <br>
-        <p>StubXtract introduces a small-scale, mobile, in-situ biorefinery unit that can be deployed directly in fields, allowing farmers to process their crop waste on-site. Instead of burning, they can extract valuable chemicals from stubble and sell them for profit.</p>
-        
-        <h3>Key Technologies Behind StubXtract</h3>
-        
-        <ul>
-          <li>In-Situ Biorefinery – Portable units that process stubble on farms, eliminating transport costs</li>
-          <li>Hemicellulose Hydrolysis – Converts stubble into xylose, a key ingredient for sugar substitutes</li>
-          <li>Lignin Valorization – Extracts vanillin, an eco-friendly alternative to synthetic vanilla</li>
-          <li>Cellulose to PLA & Lactic Acid Conversion – Produces biodegradable bioplastics for food packaging and medical use</li>
-          <li>Custom Hiring Centers (CHCs) – A Technology-as-a-Service model making it affordable for farmers to rent and use the technology</li>
-        </ul>
-        <br>
-        <h3>Why StubXtract is a Game-Changer</h3>
-        <h4>Environmental Impact</h4>
-        <ul>
-          <li>Prevents millions of tons of CO₂ emissions caused by stubble burning</li>
-          <li>Improves air quality, reducing respiratory diseases in cities</li>
-          <li>Restores soil fertility, ensuring sustainable agriculture</li>
-          <li>Reduces dependency on petroleum-based industrial chemicals</li>
-        </ul>
-        
-        <h4>Economic Impact</h4>
-        <ul>
-          <li>Creates a new revenue stream for farmers by turning waste into valuable products</li>
-          <li>Affordable through a rental model (CHCs) for small-scale farmers</li>
-          <li>Generates employment in rural areas for equipment operation and bioprocessing</li>
-        </ul>
-        
-        <h4>Social & Agricultural Impact</h4>
-        <ul>
-          <li>Improves public health by reducing pollution-related diseases</li>
-          <li>Boosts long-term farm productivity by preventing soil degradation</li>
-          <li>Establishes a circular bioeconomy, benefiting farmers, industries, and local communities</li>
-        </ul>
-        <br>
-        <h3>Support Us on This Journey</h3>
-        <br>
-        <p>Let's bring this revolutionary idea to life. If you're an investor, policymaker, or industry expert interested in partnering with us, reach out and be part of this transformative movement.</p>
-        
-        <a href="#" class="read-less" onclick="toggleContent('content-1'); return false;">Read less</a>
+    <div class="row">
+      <div class="col-12">
+        <article class="blog-post">
+          <h2>StubXtract: IIT Roorkee's Innovative Solution Selected for National-Level Hult Prize at IIT Bombay</h2>
+          <p>A Proud Moment for Enactus IIT Roorkee</p>
+          <p>We are thrilled to announce that Project StubXtract has been selected for the National-Level Hult Prize Competition to be held at IIT Bombay. Competing against some of the brightest young innovators across the country, Team StubXtract from IIT Roorkee will present its ...</p>
+          
+          <a href="#" class="read-more" onclick="toggleContent('content-1'); return false;">Read more</a>
+          
+          <div id="content-1" class="expanded-content" style="display: none;">
+            <p>A Proud Moment for Enactus IIT Roorkee<br>
+            We are thrilled to announce that Project StubXtract has been selected for the National-Level Hult Prize Competition to be held at IIT Bombay. Competing against some of the brightest young innovators across the country, Team StubXtract from IIT Roorkee will present its groundbreaking solution to tackle one of India's most pressing environmental challenges—stubble burning.</p>
+            
+            <p>The Hult Prize, often referred to as the "Nobel Prize for Students", is a prestigious global competition that challenges university students to develop social entrepreneurship solutions for critical global issues. This year's theme revolves around sustainability and impact-driven innovation, making StubXtract a perfect fit for the challenge.
+            With this achievement, our team is not just representing IIT Roorkee but also pioneering a sustainable future for Indian agriculture. But what exactly is StubXtract? Let's explore.</p>
+            
+            <h3>StubXtract: Turning Stubble Waste into a Goldmine</h3>
+            <p>Every year, thousands of farmers in India resort to stubble burning, a practice that releases toxic pollutants into the air, worsens climate change, and depletes soil fertility. Despite government regulations, the lack of cost-effective alternatives forces farmers to continue this harmful method.</p>
+            
+            <p>This is where StubXtract comes in.
+            StubXtract is an innovative biorefinery-based solution that converts agricultural waste (stubble) into high-value bio-based products like vanillin, polylactic acid (PLA), and lactic acid, all of which have significant industrial applications in food, packaging, and medical fields.</p>
+            
+            <h3>How Does StubXtract Work?</h3>
+            <p>StubXtract introduces a small-scale, mobile, in-situ biorefinery unit that can be deployed directly in fields, allowing farmers to process their crop waste on-site. Instead of burning, they can extract valuable chemicals from stubble and sell them for profit.</p>
+            
+            <h3>Key Technologies Behind StubXtract</h3>
+            
+            <ul>
+              <li>In-Situ Biorefinery – Portable units that process stubble on farms, eliminating transport costs</li>
+              <li>Hemicellulose Hydrolysis – Converts stubble into xylose, a key ingredient for sugar substitutes</li>
+              <li>Lignin Valorization – Extracts vanillin, an eco-friendly alternative to synthetic vanilla</li>
+              <li>Cellulose to PLA & Lactic Acid Conversion – Produces biodegradable bioplastics for food packaging and medical use</li>
+              <li>Custom Hiring Centers (CHCs) – A Technology-as-a-Service model making it affordable for farmers to rent and use the technology</li>
+            </ul>
+            
+            <h3>Why StubXtract is a Game-Changer</h3>
+            <h4>Environmental Impact</h4>
+            <ul>
+              <li>Prevents millions of tons of CO₂ emissions caused by stubble burning</li>
+              <li>Improves air quality, reducing respiratory diseases in cities</li>
+              <li>Restores soil fertility, ensuring sustainable agriculture</li>
+              <li>Reduces dependency on petroleum-based industrial chemicals</li>
+            </ul>
+            
+            <h4>Economic Impact</h4>
+            <ul>
+              <li>Creates a new revenue stream for farmers by turning waste into valuable products</li>
+              <li>Affordable through a rental model (CHCs) for small-scale farmers</li>
+              <li>Generates employment in rural areas for equipment operation and bioprocessing</li>
+            </ul>
+            
+            <h4>Social & Agricultural Impact</h4>
+            <ul>
+              <li>Improves public health by reducing pollution-related diseases</li>
+              <li>Boosts long-term farm productivity by preventing soil degradation</li>
+              <li>Establishes a circular bioeconomy, benefiting farmers, industries, and local communities</li>
+            </ul>
+            
+            <h3>Support Us on This Journey</h3>
+            <p>Let's bring this revolutionary idea to life. If you're an investor, policymaker, or industry expert interested in partnering with us, reach out and be part of this transformative movement.</p>
+            
+            <a href="#" class="read-less" onclick="toggleContent('content-1'); return false;">Read less</a>
+          </div>
+        </article>
       </div>
-    </article>
+    </div>
     
     <div class="blog-divider"></div>
     
-    <article class="blog-post">
-      <h2>Envision 2025: A Groundbreaking Event Shaping the Future of Social Innovation</h2>
-      <p>Envision, the flagship event hosted by Enactus IIT Roorkee, is an extraordinary platform designed to bring together some of the brightest minds in social entrepreneurship. This event, in collaboration with E. Summit 2025, promises to be a milestone in the realm of social change, inspiring innovative solutions to some of the world's most pressing challenges. Held from 31st January to 2nd February 2025, Envision aims...</p>
-      
-      <a href="#" class="read-more" onclick="toggleContent('content-2'); return false;">Read more</a>
-      
-      <div id="content-2" class="expanded-content" style="display: none;">
-        <p>Envision, the flagship event hosted by Enactus IIT Roorkee, is an extraordinary platform designed to bring together some of the brightest minds in social entrepreneurship. This event, in collaboration with E. Summit 2025, promises to be a milestone in the realm of social change, inspiring innovative solutions to some of the world's most pressing challenges. Held from 31st January to 2nd February 2025, Envision aims to empower student-led initiatives by providing them with the tools, exposure, and mentorship needed to bring their transformative ideas to life.</p>
+    <div class="row">
+      <div class="col-12">
+        <article class="blog-post">
+          <h2>Envision 2025: A Groundbreaking Event Shaping the Future of Social Innovation</h2>
+          <p>Envision, the flagship event hosted by Enactus IIT Roorkee, is an extraordinary platform designed to bring together some of the brightest minds in social entrepreneurship. This event, in collaboration with E. Summit 2025, promises to be a milestone in the realm of social change, inspiring innovative solutions to some of the world's most pressing challenges. Held from 31st January to 2nd February 2025, Envision aims...</p>
+          
+          <a href="#" class="read-more" onclick="toggleContent('content-2'); return false;">Read more</a>
+          
+          <div id="content-2" class="expanded-content" style="display: none;">
+            <p>Envision, the flagship event hosted by Enactus IIT Roorkee, is an extraordinary platform designed to bring together some of the brightest minds in social entrepreneurship. This event, in collaboration with E. Summit 2025, promises to be a milestone in the realm of social change, inspiring innovative solutions to some of the world's most pressing challenges. Held from 31st January to 2nd February 2025, Envision aims to empower student-led initiatives by providing them with the tools, exposure, and mentorship needed to bring their transformative ideas to life.</p>
 
-        <h3>A Premier Gathering of Social Entrepreneurs</h3>
-        <br>
-        <p>Envision stands as one of the most significant gatherings of social entrepreneurs in India, uniting 450+ participants and 80+ teams from across the country. These teams represent the essence of social entrepreneurship—driven by passion, purpose, and the desire to create sustainable change. Each team at Envision brings forward groundbreaking projects, designed to solve real-world social challenges, ranging from poverty alleviation and healthcare to education and environmental sustainability.</p>
-        
-        <p>This year, the event promises to be a landmark occasion in terms of participation and the quality of innovative solutions presented. Enactus teams from universities all over India will showcase their work, engage in meaningful discussions, and find innovative ways to scale and implement their ideas.</p>
+            <h3>A Premier Gathering of Social Entrepreneurs</h3>
+            <p>Envision stands as one of the most significant gatherings of social entrepreneurs in India, uniting 450+ participants and 80+ teams from across the country. These teams represent the essence of social entrepreneurship—driven by passion, purpose, and the desire to create sustainable change. Each team at Envision brings forward groundbreaking projects, designed to solve real-world social challenges, ranging from poverty alleviation and healthcare to education and environmental sustainability.</p>
+            
+            <p>This year, the event promises to be a landmark occasion in terms of participation and the quality of innovative solutions presented. Enactus teams from universities all over India will showcase their work, engage in meaningful discussions, and find innovative ways to scale and implement their ideas.</p>
 
-        <h3>Key Highlights of Envision 2025</h3>
-        <br>
-        <h4>1. Encouraging Innovative Problem-Solving:</h4>
-        <p>At its core, Envision is about empowering young minds to solve real-world social challenges. The event encourages students to think creatively, push boundaries, and come up with solutions that can make a tangible difference in communities. Whether it's a tech-driven solution for underserved communities or a sustainable model for rural development, Envision is all about breaking the mold and finding unique ways to address societal issues.</p>
+            <h3>Key Highlights of Envision 2025</h3>
+            <h4>1. Encouraging Innovative Problem-Solving:</h4>
+            <p>At its core, Envision is about empowering young minds to solve real-world social challenges. The event encourages students to think creatively, push boundaries, and come up with solutions that can make a tangible difference in communities. Whether it's a tech-driven solution for underserved communities or a sustainable model for rural development, Envision is all about breaking the mold and finding unique ways to address societal issues.</p>
 
-        <h4>2. Nationwide Participation and Exchange of Ideas:</h4>
-        <p>One of the standout features of Envision is its nationwide participation. With over 80 teams from diverse backgrounds and regions, the event fosters a vibrant exchange of ideas. This cross-cultural collaboration allows for a mix of perspectives, encouraging participants to think beyond borders and work collectively towards solutions that can be implemented on a national, and even global, scale.</p>
+            <h4>2. Nationwide Participation and Exchange of Ideas:</h4>
+            <p>One of the standout features of Envision is its nationwide participation. With over 80 teams from diverse backgrounds and regions, the event fosters a vibrant exchange of ideas. This cross-cultural collaboration allows for a mix of perspectives, encouraging participants to think beyond borders and work collectively towards solutions that can be implemented on a national, and even global, scale.</p>
 
-        <h4>3. A Platform for Scaling Impactful Ideas:</h4>
-        <p>Envision isn't just about presenting ideas—it's about taking them to the next level. With opportunities to network with potential investors, mentors, and industry leaders, the event provides a platform to scale impactful social projects. The support provided at Envision can help these young entrepreneurs grow their initiatives and turn their vision into reality, ultimately creating a lasting impact on society.</p>
+            <h4>3. A Platform for Scaling Impactful Ideas:</h4>
+            <p>Envision isn't just about presenting ideas—it's about taking them to the next level. With opportunities to network with potential investors, mentors, and industry leaders, the event provides a platform to scale impactful social projects. The support provided at Envision can help these young entrepreneurs grow their initiatives and turn their vision into reality, ultimately creating a lasting impact on society.</p>
 
-        <h4>4. Connecting Entrepreneurs with Investors and Mentors:</h4>
-        <p>The event opens doors for budding entrepreneurs to connect with potential investors and mentors, who can offer invaluable guidance and funding. This collaboration is vital for the growth of social enterprises, helping them navigate the complexities of scaling their operations, securing funding, and reaching wider audiences.</p>
+            <h4>4. Connecting Entrepreneurs with Investors and Mentors:</h4>
+            <p>The event opens doors for budding entrepreneurs to connect with potential investors and mentors, who can offer invaluable guidance and funding. This collaboration is vital for the growth of social enterprises, helping them navigate the complexities of scaling their operations, securing funding, and reaching wider audiences.</p>
 
-        <h4>5. Collaborations Between Enactus Chapters:</h4>
-        <p>Envision also serves as a catalyst for collaboration among different Enactus chapters. The event helps foster connections between teams, enabling them to share knowledge, experiences, and resources. These collaborations lead to the development of joint initiatives, allowing Enactus chapters to pool their strengths and create even more impactful projects that tackle global challenges.</p>
+            <h4>5. Collaborations Between Enactus Chapters:</h4>
+            <p>Envision also serves as a catalyst for collaboration among different Enactus chapters. The event helps foster connections between teams, enabling them to share knowledge, experiences, and resources. These collaborations lead to the development of joint initiatives, allowing Enactus chapters to pool their strengths and create even more impactful projects that tackle global challenges.</p>
 
-        <h3>A Vision for the Future</h3>
-        <br>
-        <p>Envision 2025 is more than just a competition—it is a testament to the power of young social innovators to make a real difference in the world. By encouraging collaboration, fostering innovation, and connecting student-led initiatives with essential resources, Envision plays a pivotal role in shaping the future of social entrepreneurship in India.</p>
-        
-        <p>As we look ahead to the event, the excitement and anticipation are palpable. With more teams, more ideas, and more opportunities to drive change, Envision is set to be an unforgettable experience for everyone involved. Whether you're a participant, mentor, or investor, Envision 2025 promises to be a unique journey of growth, learning, and, most importantly, impact.</p>
-        
-        <p>Get ready to be a part of the future of social innovation. See you at Envision 2025!</p>
-        
-        <a href="#" class="read-less" onclick="toggleContent('content-2'); return false;">Read less</a>
+            <h3>A Vision for the Future</h3>
+            <p>Envision 2025 is more than just a competition—it is a testament to the power of young social innovators to make a real difference in the world. By encouraging collaboration, fostering innovation, and connecting student-led initiatives with essential resources, Envision plays a pivotal role in shaping the future of social entrepreneurship in India.</p>
+            
+            <p>As we look ahead to the event, the excitement and anticipation are palpable. With more teams, more ideas, and more opportunities to drive change, Envision is set to be an unforgettable experience for everyone involved. Whether you're a participant, mentor, or investor, Envision 2025 promises to be a unique journey of growth, learning, and, most importantly, impact.</p>
+            
+            <p>Get ready to be a part of the future of social innovation. See you at Envision 2025!</p>
+            
+            <a href="#" class="read-less" onclick="toggleContent('content-2'); return false;">Read less</a>
+          </div>
+        </article>
       </div>
-    </article>
+    </div>
     
     <div class="blog-divider"></div>
   </main>
   
-  <footer class="footer" id="footer">
-    <div class="contact-details">
-      <h2 class="contact-heading">Contact Us</h2>
-      
-      <div class="contact-info">
-        <p><span class="contact-label">Email:</span> <a href="mailto:enactus@iitr.ac.in" style="text-decoration: none; color: inherit;">enactus@iitr.ac.in</a></p>
-        <p><span class="contact-label">Phone:</span> <a href="tel:+918989761216" style="text-decoration: none; color: inherit;">+91-8989761216</a></p>
-        <p><span class="contact-label">Address:</span> <a href="https://maps.google.com/?q=203-Enactus Office, SAC Building, IIT Roorkee, Roorkee, Uttarakhand, 247667" target="_blank" style="text-decoration: none; color: inherit;">
-          203-Enactus Office, SAC Building,<br>
-          IIT Roorkee, Roorkee, Uttarakhand, 247667
-        </a></p>
-      </div>
-      
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/company/enactusiitroorkee/" class="social-icon" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-          </svg>
-        </a>
-        <a href="https://www.instagram.com/enactus_iitroorkee" class="social-icon" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-        </a>
-        <a href="https://www.facebook.com/enactusiitroorkee" class="social-icon" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
-          </svg>
-        </a>
-      </div>
+  <!-- Footer -->
+  <footer class="footer py-5" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="contact-details text-start text-sm-center text-lg-start">
+            <h2 class="contact-heading">Contact Us</h2>
+            
+            <div class="contact-info">
+              <p><span class="contact-label">Email:</span> <a href="mailto:enactus@iitr.ac.in" style="text-decoration: none; color: inherit;">enactus@iitr.ac.in</a></p>
+              <p><span class="contact-label">Phone:</span> <a href="tel:+918989761216" style="text-decoration: none; color: inherit;">+91-8989761216</a></p>
+              <p><span class="contact-label">Address:</span> <a href="https://maps.google.com/?q=203-Enactus Office, SAC Building, IIT Roorkee, Roorkee, Uttarakhand, 247667" target="_blank" style="text-decoration: none; color: inherit;">
+                203-Enactus Office, SAC Building,<br>
+                IIT Roorkee, Roorkee, Uttarakhand, 247667
+              </a></p>
+            </div>
+            
+            <div class="social-icons d-flex justify-content-start justify-content-sm-center justify-content-lg-start">
+              <a href="https://www.linkedin.com/company/enactusiitroorkee/" class="social-icon" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/enactus_iitroorkee" class="social-icon" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/enactusiitroorkee" class="social-icon" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                </svg>
+              </a>
+            </div>
 
-      <div class="footer-credits">
-        <p>Made by <a href="https://www.linkedin.com/in/utkarsh-kumar-95740130b/" target="_blank" style="color: inherit;">UK47</a></p>
-        <p>Powered by Enactus IITR</p>
-      </div>
-    </div>
+            <div class="footer-credits text-start text-sm-center text-lg-start">
+              <p>Made by <a href="https://www.linkedin.com/in/utkarsh-kumar-95740130b/" target="_blank" style="color: inherit;">UK47</a><br>
+              Powered by Enactus IITR</p>
+            </div>
+          </div>
+        </div>
 
-    <div class="map-container">
-      <div id="map"></div>
+        <div class="col-lg-6">
+          <div class="map-container">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -565,76 +614,95 @@
     </a>
   </div>
 
+  <!-- Bootstrap JS bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Toggle content script -->
   <script>
-    // Optional: Keyboard accessibility for dropdown
-    document.querySelectorAll('.nav-link.projects').forEach(link => {
-      link.addEventListener('focus', function() {
-        this.parentElement.classList.add('focus');
-      });
-      link.addEventListener('blur', function() {
-        this.parentElement.classList.remove('focus');
-      });
-    });
-    
-    // Optional: Close dropdown on click outside (for mobile)
-    document.addEventListener('click', function(e) {
-      document.querySelectorAll('.nav-item.projects').forEach(item => {
-        if (!item.contains(e.target)) {
-          item.classList.remove('focus');
-        }
-      });
-    });
-
-    // Leaflet map script
-    document.addEventListener('DOMContentLoaded', function() {
-      // Load Leaflet script dynamically
-      var script = document.createElement('script');
-      script.src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js";
-      script.integrity = "sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==";
-      script.crossOrigin = "";
+    function toggleContent(id) {
+      var content = document.getElementById(id);
+      var moreBtn = document.querySelector(`a[onclick="toggleContent('${id}'); return false;"].read-more`);
+      var lessBtn = document.querySelector(`a[onclick="toggleContent('${id}'); return false;"].read-less`);
       
-      script.onload = function() {
-        // Map center coordinates (IIT Roorkee area)
-        var mapCenter = [29.8665,77.8999];
-        
-        // Office pin location coordinates (SAC Building) - Change these values to adjust pin location
-        var pinLocation = [29.8665,77.8999];
-        
-        // Initialize map
-        var map = L.map('map', {
-          zoomControl: false  // Disable default zoom controls
-        }).setView(mapCenter, 17);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19
-        }).addTo(map);
-        
-        // Add custom zoom control (only one)
-        L.control.zoom({
-          position: 'topleft'
-        }).addTo(map);
-        
-        // Add marker for Enactus office at the custom pin location
-        var marker = L.marker(pinLocation).addTo(map)
-          .bindPopup("Enactus Office, SAC Building, IIT Roorkee");
-      };
-      
-      document.head.appendChild(script);
-    });
-
-    // Function to toggle expanded content
-    function toggleContent(contentId) {
-      const content = document.getElementById(contentId);
-      if (content.style.display === 'none') {
-        content.style.display = 'block';
-        // Find the "Read more" link that was clicked and hide it
-        content.previousElementSibling.style.display = 'none';
+      if (content.style.display === "none") {
+        // Expanding content
+        content.style.display = "block";
+        if (moreBtn) moreBtn.style.display = "none";
+        if (lessBtn) lessBtn.style.display = "block";
       } else {
-        content.style.display = 'none';
-        // Show the "Read more" link again
-        content.previousElementSibling.style.display = 'inline-block';
+        // Collapsing content
+        content.style.display = "none";
+        if (moreBtn) moreBtn.style.display = "block";
+        if (lessBtn) lessBtn.style.display = "none";
       }
     }
+
+    // Initialize all read-less buttons to be hidden on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      var lessBtns = document.querySelectorAll('.read-less');
+      lessBtns.forEach(function(btn) {
+        btn.style.display = "none";
+      });
+    });
+  </script>
+  
+  <!-- Leaflet map script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // First load the Leaflet CSS
+      var leafletCSS = document.createElement('link');
+      leafletCSS.rel = 'stylesheet';
+      leafletCSS.href = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css';
+      leafletCSS.integrity = 'sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==';
+      leafletCSS.crossOrigin = '';
+      document.head.appendChild(leafletCSS);
+      
+      // Then load the Leaflet JS with a slight delay to ensure CSS is loaded
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js";
+        script.integrity = "sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==";
+        script.crossOrigin = "";
+        
+        script.onload = function() {
+          // Create the map only after the script has loaded
+          var mapContainer = document.getElementById('map');
+          
+          if (mapContainer) {
+            // IIT Roorkee coordinates
+            var mapCenter = [29.8665, 77.8999];
+            
+            // Initialize the map
+            var map = L.map('map', {
+              zoomControl: false,
+              attributionControl: true
+            }).setView(mapCenter, 15);
+            
+            // Add the tile layer (map imagery)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 19,
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add custom zoom control in a better position
+            L.control.zoom({
+              position: 'topright'
+            }).addTo(map);
+            
+            // Add a marker for Enactus office
+            var marker = L.marker(mapCenter).addTo(map)
+              .bindPopup("<strong>Enactus Office</strong><br>SAC Building, IIT Roorkee");
+            
+            // Force a resize event after map creation to ensure proper rendering
+            setTimeout(function() {
+              map.invalidateSize();
+            }, 100);
+          }
+        };
+        
+        document.head.appendChild(script);
+      }, 100);
+    });
   </script>
 </body>
 </html> 
