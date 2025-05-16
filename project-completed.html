@@ -27,7 +27,17 @@
   <style>
     /* Reset and base styles */
     * { box-sizing: border-box; }
-    body { font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; background: #fff; }
+    html, body {
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body { 
+      font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; 
+      background: #fff; 
+      position: relative; /* Helps with overflow handling */
+    }
     html { scroll-behavior: smooth; }
 
     /* Header container */
