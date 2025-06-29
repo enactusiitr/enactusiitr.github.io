@@ -8,9 +8,9 @@ Allow: /our-team.html
 Allow: /project-completed.html
 Allow: /project-in-progress.html
 
-# Disallow asset/code folders (not needed for indexing)
+# Disallow asset/code folders
 Disallow: /files/
 Disallow: /.git/
 
-# Sitemap location (replace with your actual URL)
+# Sitemap location 
 Sitemap: https://enactusiitr.github.io/sitemap.xml
